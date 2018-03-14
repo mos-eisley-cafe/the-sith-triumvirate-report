@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   tier = 5;
   start = new Date('2018/03/07');
   finish = new Date('2018/03/09');
-  resetAttempts = 3;
+  resetAttempts = 2;
 
   items = (<any>data);
 
