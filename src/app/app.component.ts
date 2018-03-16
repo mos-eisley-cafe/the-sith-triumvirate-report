@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
 
   items = (<any>data).items;
 
+  days = Array.from(new Array(this.resetAttempts + 1), (x, i) => i + 1);
+
   ngOnInit() {
   }
 
