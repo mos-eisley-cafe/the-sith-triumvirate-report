@@ -19,38 +19,22 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  getPlayerTotal(item: any) {
+  getPlayerTotalDamage(item: any): number {
     return item.day1 + item.day2 + item.day3;
   }
 
-  getDay1Total() {
+  getDayDamage(index: number): number {
     let total = 0;
     for (const item of this.items) {
-      total += item.day1;
+      total += item['day' + index];
     }
     return total;
   }
 
-  getDay2Total() {
+  getTotalDamage(): number {
     let total = 0;
     for (const item of this.items) {
-      total += item.day3;
-    }
-    return total;
-  }
-
-  getDay3Total() {
-    let total = 0;
-    for (const item of this.items) {
-      total += item.day3;
-    }
-    return total;
-  }
-
-  getTotal() {
-    let total = 0;
-    for (const item of this.items) {
-      total += this.getPlayerTotal(item);
+      total += this.getPlayerTotalDamage(item);
     }
     return total;
   }

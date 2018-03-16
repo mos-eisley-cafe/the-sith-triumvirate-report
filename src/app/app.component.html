@@ -27,30 +27,37 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of items; let i = index">
-            <th scope="row" class="text-right">{{ i + 1 }}</th>
+          <tr *ngFor="let item of items; index as i">
+            <th scope="row" class="text-right">
+              {{ i + 1 }}
+            </th>
             <td>{{ item.name }}</td>
-            <td class="text-right" [ngClass]="{ 'bg-danger': item.day1 === 0 }">
-              {{ item.day1 | number }}
+
+            <td *ngFor="let i of [1,2,3]; last as isLast"
+                class="text-right"
+                [ngClass]="{
+                  'bg-danger': item['day' + i] === 0 && !isLast,
+                  'bg-warning': item['day' + i] === 0 && isLast
+                 }">
+              {{ item['day' + i] | number }}
             </td>
-            <td class="text-right" [ngClass]="{ 'bg-danger': item.day2 === 0 }">
-              {{ item.day2 | number }}
-            </td>
-            <td class="text-right" [ngClass]="{ 'bg-warning': item.day3 === 0 }">
-              {{ item.day3 | number }}
-            </td>
-            <td class="text-right" [ngClass]="{ 'bg-danger': getPlayerTotal(item) === 0 }">
-              {{ getPlayerTotal(item) | number }}
+
+            <td class="text-right"
+                [ngClass]="{ 'bg-danger': getPlayerTotalDamage(item) === 0 }">
+              {{ getPlayerTotalDamage(item) | number }}
             </td>
           </tr>
           </tbody>
           <tfoot class="thead-light">
           <tr>
             <th colspan=2 class="text-right">Total:</th>
-            <th class="text-right">{{ getDay1Total() | number }}</th>
-            <th class="text-right">{{ getDay2Total() | number }}</th>
-            <th class="text-right">{{ getDay3Total() | number }}</th>
-            <th class="text-right">{{ getTotal() | number }}</th>
+
+            <th *ngFor="let i of [1,2,3]"
+                class="text-right">
+              {{ getDayDamage(i) | number }}
+            </th>
+
+            <th class="text-right">{{ getTotalDamage() | number }}</th>
           </tr>
           </tfoot>
         </table>
@@ -58,10 +65,4 @@
     </div>
     <div class="col"></div>
   </div>
-
-  <!--<div class="row">-->
-    <!--<div class="col"></div>-->
-    <!--<div id="chart" class="col-12 col-xl-10"></div>-->
-    <!--<div class="col"></div>-->
-  <!--</div>-->
 </div>
