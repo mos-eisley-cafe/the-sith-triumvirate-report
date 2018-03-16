@@ -21,8 +21,9 @@
             <th scope="col" class="text-center align-middle">#</th>
             <th scope="col" class="align-middle">Name</th>
 
-            <th *ngFor="let i of days"
-              scope="col" class="text-center">
+            <th *ngFor="let i of days; first as isFirst; last as isLast"
+                [ngStyle]="isFirst && isLast && { 'display':'none' }"
+                scope="col" class="text-center">
               Day {{ i }}
             </th>
 
@@ -36,8 +37,9 @@
             </th>
             <td>{{ item.name }}</td>
 
-            <td *ngFor="let i of days; last as isLast"
+            <td *ngFor="let i of days; first as isFirst; last as isLast"
                 class="text-right"
+                [ngStyle]="isFirst && isLast && { 'display':'none' }"
                 [ngClass]="{
                   'bg-danger': item['day' + i] === 0 && !isLast,
                   'bg-warning': item['day' + i] === 0 && isLast
@@ -55,7 +57,8 @@
           <tr>
             <th colspan=2 class="text-right">Total:</th>
 
-            <th *ngFor="let i of days"
+            <th *ngFor="let i of days; first as isFirst; last as isLast"
+                [ngStyle]="isFirst && isLast && { 'display':'none' }"
                 class="text-right">
               {{ getDayDamage(i) | number }}
             </th>
