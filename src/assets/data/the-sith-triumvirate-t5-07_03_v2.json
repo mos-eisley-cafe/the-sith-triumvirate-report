@@ -2,6 +2,7 @@
   "start": "2018/03/07",
   "finish": "2018/03/09",
   "resetAttempts": 2,
+  "daysToDisplay": 3,
   "items": [
     {
       "name": "Delara Exibil",

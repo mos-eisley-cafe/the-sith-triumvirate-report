@@ -16,7 +16,7 @@ export class AppComponent {
 
   items = (<any>data).items;
 
-  days = Array.from(new Array(this.resetAttempts + 1), (x, i) => i + 1);
+  days = Array.from(new Array((<any>data).daysToDisplay), (x, i) => i + 1);
 
   getPlayerTotalDamage(item: any): number {
     return item.day1 + item.day2 + item.day3;
