@@ -15,8 +15,8 @@
     <div class="col"></div>
     <div class="col-12 col-lg-10 col-xl-8">
       <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-          <thead class="thead-light">
+        <table class="table table-striped">
+          <thead>
           <tr>
             <th scope="col" class="text-center align-middle">#</th>
             <th scope="col" class="align-middle">Name</th>
@@ -35,7 +35,7 @@
             <th scope="row" class="text-right">
               {{ i + 1 }}
             </th>
-            <td>{{ item.name }}</td>
+            <td class="font-weight-bold">{{ item.name }}</td>
 
             <td *ngFor="let i of days; first as isFirst; last as isLast"
                 class="text-right"
@@ -47,7 +47,7 @@
               {{ item['day' + i] | number }}
             </td>
 
-            <td class="text-right"
+            <td class="text-right font-weight-bold"
                 [ngClass]="{ 'bg-danger': getPlayerTotalDamage(item) === 0 }">
               {{ getPlayerTotalDamage(item) | number }}
             </td>
