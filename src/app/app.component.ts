@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import * as data from '../assets/data/the-sith-triumvirate-t5-07_03_v2.json';
+import * as data from '../assets/data/the-sith-triumvirate-t5-13_03.json';
 
 @Component({
   selector: 'app-root',
