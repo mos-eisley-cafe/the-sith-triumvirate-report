@@ -30,27 +30,27 @@
           <tr *ngFor="let item of items; let i = index">
             <th scope="row" class="text-right">{{ i + 1 }}</th>
             <td>{{ item.name }}</td>
-            <td class="text-right" [ngClass]="{ 'bg-danger': item.day1_total === 0 }">
-              {{ item.day1_total | number }}
+            <td class="text-right" [ngClass]="{ 'bg-danger': item.day1 === 0 }">
+              {{ item.day1 | number }}
             </td>
-            <td class="text-right" [ngClass]="{ 'bg-danger': item.day2_new === 0 }">
-              {{ item.day2_new | number }}
+            <td class="text-right" [ngClass]="{ 'bg-danger': item.day2 === 0 }">
+              {{ item.day2 | number }}
             </td>
-            <td class="text-right" [ngClass]="{ 'bg-warning': item.day3_new === 0 }">
-              {{ item.day3_new | number }}
+            <td class="text-right" [ngClass]="{ 'bg-warning': item.day3 === 0 }">
+              {{ item.day3 | number }}
             </td>
-            <td class="text-right" [ngClass]="{ 'bg-danger': item.day3_total === 0 }">
-              {{ item.day3_total | number }}
+            <td class="text-right" [ngClass]="{ 'bg-danger': getPlayerTotal(item) === 0 }">
+              {{ getPlayerTotal(item) | number }}
             </td>
           </tr>
           </tbody>
           <tfoot class="thead-light">
           <tr>
             <th colspan=2 class="text-right">Total:</th>
-            <th class="text-right">{{ total.day1_total | number }}</th>
-            <th class="text-right">{{ total.day2_new | number }}</th>
-            <th class="text-right">{{ total.day3_new | number }}</th>
-            <th class="text-right">{{ total.day3_total | number }}</th>
+            <th class="text-right">{{ getDay1Total() | number }}</th>
+            <th class="text-right">{{ getDay2Total() | number }}</th>
+            <th class="text-right">{{ getDay3Total() | number }}</th>
+            <th class="text-right">{{ getTotal() | number }}</th>
           </tr>
           </tfoot>
         </table>

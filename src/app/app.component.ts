@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import * as data from '../assets/data/the-sith-triumvirate-t5-07_03.json';
+import * as data from '../assets/data/the-sith-triumvirate-t5-07_03_v2.json';
 
 @Component({
   selector: 'app-root',
@@ -10,27 +10,48 @@ import * as data from '../assets/data/the-sith-triumvirate-t5-07_03.json';
 export class AppComponent implements OnInit {
 
   tier = 5;
-  start = new Date('2018/03/07');
-  finish = new Date('2018/03/09');
-  resetAttempts = 2;
+  start = new Date((<any>data).start);
+  finish = new Date((<any>data).finish);
+  resetAttempts = (<any>data).resetAttempts;
 
-  items = (<any>data);
-
-  total = {
-    day1_total: 0,
-    day2_new: 0,
-    day2_total: 0,
-    day3_new: 0,
-    day3_total: 0
-  };
+  items = (<any>data).items;
 
   ngOnInit() {
-    for (const entry of this.items) {
-      this.total.day1_total += entry.day1_total;
-      this.total.day2_new += entry.day2_new;
-      this.total.day2_total += entry.day2_total;
-      this.total.day3_new += entry.day3_new;
-      this.total.day3_total += entry.day3_total;
+  }
+
+  getPlayerTotal(item: any) {
+    return item.day1 + item.day2 + item.day3;
+  }
+
+  getDay1Total() {
+    let total = 0;
+    for (const item of this.items) {
+      total += item.day1;
     }
+    return total;
+  }
+
+  getDay2Total() {
+    let total = 0;
+    for (const item of this.items) {
+      total += item.day3;
+    }
+    return total;
+  }
+
+  getDay3Total() {
+    let total = 0;
+    for (const item of this.items) {
+      total += item.day3;
+    }
+    return total;
+  }
+
+  getTotal() {
+    let total = 0;
+    for (const item of this.items) {
+      total += this.getPlayerTotal(item);
+    }
+    return total;
   }
 }
