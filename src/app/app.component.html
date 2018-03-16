@@ -20,9 +20,12 @@
           <tr>
             <th scope="col" class="text-center align-middle">#</th>
             <th scope="col" class="align-middle">Name</th>
-            <th scope="col" class="text-center">Day 1</th>
-            <th scope="col" class="text-center">Day 2</th>
-            <th scope="col" class="text-center">Day 3</th>
+
+            <th *ngFor="let i of [1,2,3]"
+              scope="col" class="text-center">
+              Day {{ i }}
+            </th>
+
             <th scope="col" class="text-center">Total</th>
           </tr>
           </thead>
