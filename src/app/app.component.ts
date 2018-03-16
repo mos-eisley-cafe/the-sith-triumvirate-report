@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 import * as data from '../assets/data/the-sith-triumvirate-t5-07_03_v2.json';
 
@@ -7,7 +7,7 @@ import * as data from '../assets/data/the-sith-triumvirate-t5-07_03_v2.json';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   tier = 5;
   start = new Date((<any>data).start);
@@ -17,9 +17,6 @@ export class AppComponent implements OnInit {
   items = (<any>data).items;
 
   days = Array.from(new Array(this.resetAttempts + 1), (x, i) => i + 1);
-
-  ngOnInit() {
-  }
 
   getPlayerTotalDamage(item: any): number {
     return item.day1 + item.day2 + item.day3;
